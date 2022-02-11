@@ -1,6 +1,20 @@
-type ExampleEntity @entity {
+type User @entity {
   id: ID!
-  count: BigInt!
-  _epoch: BigInt! # uint256
-  _epochKey: BigInt! # uint256
+  identity: Bytes!
+  timestamp: BigInt!
+}
+
+type Vote @entity {
+  id: ID!
+  timestamp: BigInt!
+}
+
+type Comment @entity {
+  id: ID!
+  timestamp: BigInt!
+}
+
+type Airdrop @entity {
+  id: ID!
+  timestamp: BigInt!
 }
