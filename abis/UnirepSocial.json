@@ -1,0 +1,695 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "contract Unirep",
+        "name": "_unirepContract",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_postReputation",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_commentReputation",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_airdroppedReputation",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_epoch",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_epochKey",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          { "internalType": "uint256", "name": "epoch", "type": "uint256" },
+          { "internalType": "uint256", "name": "epochKey", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "globalStateTree",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "attesterId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "userHasSignedUp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[8]",
+            "name": "proof",
+            "type": "uint256[8]"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct UnirepObjs.SignUpProof",
+        "name": "proofRelated",
+        "type": "tuple"
+      }
+    ],
+    "name": "AirdropSubmitted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_epoch",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_postId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_epochKey",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_commentContent",
+        "type": "string"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256[]",
+            "name": "repNullifiers",
+            "type": "uint256[]"
+          },
+          { "internalType": "uint256", "name": "epoch", "type": "uint256" },
+          { "internalType": "uint256", "name": "epochKey", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "globalStateTree",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "attesterId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "proveReputationAmount",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "minRep", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "proveGraffiti",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "graffitiPreImage",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[8]",
+            "name": "proof",
+            "type": "uint256[8]"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct UnirepObjs.ReputationProof",
+        "name": "proofRelated",
+        "type": "tuple"
+      }
+    ],
+    "name": "CommentSubmitted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_epoch",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_epochKey",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_postContent",
+        "type": "string"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256[]",
+            "name": "repNullifiers",
+            "type": "uint256[]"
+          },
+          { "internalType": "uint256", "name": "epoch", "type": "uint256" },
+          { "internalType": "uint256", "name": "epochKey", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "globalStateTree",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "attesterId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "proveReputationAmount",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "minRep", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "proveGraffiti",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "graffitiPreImage",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[8]",
+            "name": "proof",
+            "type": "uint256[8]"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct UnirepObjs.ReputationProof",
+        "name": "proofRelated",
+        "type": "tuple"
+      }
+    ],
+    "name": "PostSubmitted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_epoch",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_identityCommitment",
+        "type": "uint256"
+      }
+    ],
+    "name": "UserSignedUp",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_epoch",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_fromEpochKey",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_toEpochKey",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "upvoteValue",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "downvoteValue",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256[]",
+            "name": "repNullifiers",
+            "type": "uint256[]"
+          },
+          { "internalType": "uint256", "name": "epoch", "type": "uint256" },
+          { "internalType": "uint256", "name": "epochKey", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "globalStateTree",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "attesterId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "proveReputationAmount",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "minRep", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "proveGraffiti",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "graffitiPreImage",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[8]",
+            "name": "proof",
+            "type": "uint256[8]"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct UnirepObjs.ReputationProof",
+        "name": "proofRelated",
+        "type": "tuple"
+      }
+    ],
+    "name": "VoteSubmitted",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          { "internalType": "uint256", "name": "epoch", "type": "uint256" },
+          { "internalType": "uint256", "name": "epochKey", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "globalStateTree",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "attesterId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "userHasSignedUp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[8]",
+            "name": "proof",
+            "type": "uint256[8]"
+          }
+        ],
+        "internalType": "struct UnirepObjs.SignUpProof",
+        "name": "_signUpProofData",
+        "type": "tuple"
+      }
+    ],
+    "name": "airdrop",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "airdroppedReputation",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "attesterId",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "commentReputation",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "isEpochKeyGotAirdrop",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "postId", "type": "uint256" },
+      { "internalType": "string", "name": "content", "type": "string" },
+      {
+        "components": [
+          {
+            "internalType": "uint256[]",
+            "name": "repNullifiers",
+            "type": "uint256[]"
+          },
+          { "internalType": "uint256", "name": "epoch", "type": "uint256" },
+          { "internalType": "uint256", "name": "epochKey", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "globalStateTree",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "attesterId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "proveReputationAmount",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "minRep", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "proveGraffiti",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "graffitiPreImage",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[8]",
+            "name": "proof",
+            "type": "uint256[8]"
+          }
+        ],
+        "internalType": "struct UnirepObjs.ReputationProof",
+        "name": "_proofRelated",
+        "type": "tuple"
+      }
+    ],
+    "name": "leaveComment",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "postReputation",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_outputBlindedUserState",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_outputBlindedHashChain",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_inputBlindedUserState",
+        "type": "uint256"
+      },
+      { "internalType": "uint256[8]", "name": "_proof", "type": "uint256[8]" }
+    ],
+    "name": "processAttestations",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "string", "name": "content", "type": "string" },
+      {
+        "components": [
+          {
+            "internalType": "uint256[]",
+            "name": "repNullifiers",
+            "type": "uint256[]"
+          },
+          { "internalType": "uint256", "name": "epoch", "type": "uint256" },
+          { "internalType": "uint256", "name": "epochKey", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "globalStateTree",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "attesterId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "proveReputationAmount",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "minRep", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "proveGraffiti",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "graffitiPreImage",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[8]",
+            "name": "proof",
+            "type": "uint256[8]"
+          }
+        ],
+        "internalType": "struct UnirepObjs.ReputationProof",
+        "name": "_proofRelated",
+        "type": "tuple"
+      }
+    ],
+    "name": "publishPost",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_blindedUserState",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_blindedHashChain",
+        "type": "uint256"
+      },
+      { "internalType": "uint256", "name": "_GSTRoot", "type": "uint256" },
+      { "internalType": "uint256[8]", "name": "_proof", "type": "uint256[8]" }
+    ],
+    "name": "startUserStateTransition",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "unirep",
+    "outputs": [
+      { "internalType": "contract Unirep", "name": "", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "newGlobalStateTreeLeaf",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "epkNullifiers",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "transitionFromEpoch",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "blindedUserStates",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "fromGlobalStateTree",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "blindedHashChains",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "fromEpochTree",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[8]",
+            "name": "proof",
+            "type": "uint256[8]"
+          }
+        ],
+        "internalType": "struct UnirepObjs.UserTransitionProof",
+        "name": "userTransitionedData",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "proofIndexes",
+        "type": "uint256[]"
+      }
+    ],
+    "name": "updateUserStateRoot",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_identityCommitment",
+        "type": "uint256"
+      }
+    ],
+    "name": "userSignUp",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "upvoteValue", "type": "uint256" },
+      { "internalType": "uint256", "name": "downvoteValue", "type": "uint256" },
+      { "internalType": "uint256", "name": "toEpochKey", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "toEpochKeyProofIndex",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256[]",
+            "name": "repNullifiers",
+            "type": "uint256[]"
+          },
+          { "internalType": "uint256", "name": "epoch", "type": "uint256" },
+          { "internalType": "uint256", "name": "epochKey", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "globalStateTree",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "attesterId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "proveReputationAmount",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "minRep", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "proveGraffiti",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "graffitiPreImage",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[8]",
+            "name": "proof",
+            "type": "uint256[8]"
+          }
+        ],
+        "internalType": "struct UnirepObjs.ReputationProof",
+        "name": "_proofRelated",
+        "type": "tuple"
+      }
+    ],
+    "name": "vote",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  }
+]
