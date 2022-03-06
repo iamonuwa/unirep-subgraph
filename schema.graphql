@@ -11,7 +11,8 @@ type User @entity {
 type Vote @entity {
   id: ID!
   user: User!
-  vote: String!
+  up: BigInt!
+  down: BigInt!
   createdAt: BigInt!
 }
 
@@ -19,11 +20,20 @@ type Comment @entity {
   id: ID!
   comment: String!
   user: User!
+  post: Post!
   createdAt: BigInt!
 }
 
 type Airdrop @entity {
   id: ID!
   receipient: User!
+  createdAt: BigInt!
+}
+
+type Post @entity {
+  id: ID!
+  content: String!
+  user: User!
+  comments: [Comment!]! @derivedFrom(field: "post")
   createdAt: BigInt!
 }
