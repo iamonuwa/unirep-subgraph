@@ -1,5 +1,5 @@
 {
-  "name": "unirep-social",
+  "name": "unirep",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",

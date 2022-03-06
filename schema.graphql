@@ -1,20 +1,29 @@
 type User @entity {
   id: ID!
   identity: Bytes!
-  timestamp: BigInt!
+  votes: [Vote!]! @derivedFrom(field: "user")
+  comments: [Comment!]! @derivedFrom(field: "user")
+  airdrops: [Airdrop!]! @derivedFrom(field: "receipient")
+  proofIndex: BigInt!
+  createdAt: BigInt!
 }
 
 type Vote @entity {
   id: ID!
-  timestamp: BigInt!
+  user: User!
+  vote: String!
+  createdAt: BigInt!
 }
 
 type Comment @entity {
   id: ID!
-  timestamp: BigInt!
+  comment: String!
+  user: User!
+  createdAt: BigInt!
 }
 
 type Airdrop @entity {
   id: ID!
-  timestamp: BigInt!
+  receipient: User!
+  createdAt: BigInt!
 }
