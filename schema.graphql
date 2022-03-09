@@ -4,6 +4,7 @@ type User @entity {
   votes: [Vote!]! @derivedFrom(field: "user")
   comments: [Comment!]! @derivedFrom(field: "user")
   airdrops: [Airdrop!]! @derivedFrom(field: "receipient")
+  posts: [Post!]! @derivedFrom(field: "post")
   proofIndex: BigInt!
   createdAt: BigInt!
 }
