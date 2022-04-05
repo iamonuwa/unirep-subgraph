@@ -11,6 +11,7 @@ import { createOrLoadPost } from "../entities/Post";
 import { createOrLoadUser } from "../entities/User";
 import { createOrLoadVote } from "../entities/Vote";
 import { buildId } from "../utils/buildId";
+
 export function handleUserSignedUp(event: UserSignUpEvent): void {
   const user = createOrLoadUser(event.transaction.from);
 

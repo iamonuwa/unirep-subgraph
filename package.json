@@ -4,10 +4,14 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ iamonuwa/unirep-social"
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ iamonuwa/unirep-social",
+    "test": "graph test Unirep"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.22.4",
     "@graphprotocol/graph-ts": "0.22.1"
+  },
+  "devDependencies": {
+    "matchstick-as": "^0.4.2"
   }
 }
