@@ -4,7 +4,7 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy:goerli": "graph deploy --node https://api.thegraph.com/deploy/ iamonuwa/unirep-social"
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ iamonuwa/unirep-social"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.22.4",
