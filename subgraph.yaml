@@ -9,7 +9,7 @@ dataSources:
     network: optimism-kovan
     source:
       startBlock: 0
-      address: "0xC44b068af725a6f016952C8fF3C0FDB58Dcc9E02"
+      address: "0x0D2950c429416960dC6453E69b2F16780F63b585"
       abi: Unirep
     mapping:
       kind: ethereum/events
