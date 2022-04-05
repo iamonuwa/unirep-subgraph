@@ -6,10 +6,10 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Unirep
-    network: goerli
+    network: optimism-kovan
     source:
-      startBlock: 6389623
-      address: "0x3d04278f609Ec95559f626a2be9877311ba165b0"
+      startBlock: 0
+      address: "0xC44b068af725a6f016952C8fF3C0FDB58Dcc9E02"
       abi: Unirep
     mapping:
       kind: ethereum/events
@@ -23,38 +23,6 @@ dataSources:
         - VoteSubmitted
       abis:
         - name: Unirep
-          file: ./abis/Unirep.json
-      eventHandlers:
-        - event: AirdropSubmitted(indexed uint256,indexed uint256,(uint256,uint256,uint256,uint256,uint256,uint256[8]))
-          handler: handleAirdropSubmitted
-        - event: CommentSubmitted(indexed uint256,indexed uint256,indexed uint256,string,(uint256[],uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[8]))
-          handler: handleCommentSubmitted
-        - event: PostSubmitted(indexed uint256,indexed uint256,string,(uint256[],uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[8]))
-          handler: handlePostSubmitted
-        - event: UserSignedUp(indexed uint256,indexed uint256)
-          handler: handleUserSignedUp
-        - event: VoteSubmitted(indexed uint256,indexed uint256,indexed uint256,uint256,uint256,(uint256[],uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[8]))
-          handler: handleVoteSubmitted
-      file: ./src/mappings/Unirep.ts
-  - kind: ethereum/contract
-    name: UnirepSocial
-    network: goerli
-    source:
-      startBlock: 6389623
-      address: "0x77CdFb9889b38259E1DCbd0D3cEd2889Ccff8ba0"
-      abi: UnirepSocial
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - AirdropSubmitted
-        - CommentSubmitted
-        - PostSubmitted
-        - UserSignedUp
-        - VoteSubmitted
-      abis:
-        - name: UnirepSocial
           file: ./abis/UnirepSocial.json
       eventHandlers:
         - event: AirdropSubmitted(indexed uint256,indexed uint256,(uint256,uint256,uint256,uint256,uint256,uint256[8]))
@@ -68,4 +36,3 @@ dataSources:
         - event: VoteSubmitted(indexed uint256,indexed uint256,indexed uint256,uint256,uint256,(uint256[],uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[8]))
           handler: handleVoteSubmitted
       file: ./src/mappings/Unirep.ts
-      
