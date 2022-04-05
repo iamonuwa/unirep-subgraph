@@ -1,10 +1,10 @@
 type User @entity {
   id: ID!
-  identity: Bytes!
+  epochKey: String!
   votes: [Vote!]! @derivedFrom(field: "user")
-  comments: [Comment!]! @derivedFrom(field: "user")
+  comments: [Comment!]! @derivedFrom(field: "author")
   airdrops: [Airdrop!]! @derivedFrom(field: "receipient")
-  posts: [Post!]! @derivedFrom(field: "post")
+  posts: [Post!]! @derivedFrom(field: "author")
   proofIndex: BigInt!
   createdAt: BigInt!
 }
@@ -20,7 +20,7 @@ type Vote @entity {
 type Comment @entity {
   id: ID!
   comment: String!
-  user: User!
+  author: User!
   post: Post!
   createdAt: BigInt!
 }
@@ -34,7 +34,7 @@ type Airdrop @entity {
 type Post @entity {
   id: ID!
   content: String!
-  user: User!
-  comments: [Comment!]! @derivedFrom(field: "post")
+  author: User!
+  comment: [Comment!]! @derivedFrom(field: "post")
   createdAt: BigInt!
 }
